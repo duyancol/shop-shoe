@@ -1,4 +1,14 @@
+FROM maven:3.9.9 AS build
 
+# Set the working directory inside the container
+WORKDIR /app
+
+# Copy the pom.xml and source code to the container
+COPY pom.xml ./
+COPY src ./src
+
+# Package the application (skip tests to speed up the process)
+RUN mvn clean package -DskipTests
 
 # Step 2: Runtime Stage
 FROM openjdk:24-slim-bullseye
