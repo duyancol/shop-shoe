@@ -15,9 +15,9 @@ FROM openjdk:24-slim-bullseye
 
 # Set the working directory inside the container
 
-
+WORKDIR /app
 # Copy the JAR file from the build stage to the runtime stage
-COPY target/Shoe-Shop-0.0.1-SNAPSHOT.jar Shoe-Shop-0.0.1-SNAPSHOT.jar
+COPY --from=build/app/target/Shoe-Shop-0.0.1-SNAPSHOT.jar app.jar
 
 # Command to run the application
-ENTRYPOINT ["java", "-jar", "/Shoe-Shop-0.0.1-SNAPSHOT.jar"]
+ENTRYPOINT ["java", "-jar", "/app.jar"]
