@@ -1,9 +1,8 @@
 package com.example.Shoe_Shop.Entity;
-
 import jakarta.persistence.*;
-
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
 @Entity
 @Table(name = "product")
 @Data
@@ -35,10 +34,11 @@ public class Product {
     @Column(length = 45,nullable = true,name = "derectory")
     private String derectory;
 
+    @Column(length = 45,nullable = true,name = "reportStart")
+    private String reportStart;
 
 
-
-    public Product(Integer id, String name, int price, int quantity, String img, String category, String derectory) {
+    public Product(Integer id, String name, int price, int quantity, String img, String category, String derectory,String reportStart) {
         this.id = id;
         this.name = name;
         this.price = price;
@@ -46,6 +46,7 @@ public class Product {
         this.img = img;
         this.category = category;
         this.derectory = derectory;
+        this.reportStart=reportStart;
     }
     public Product( String name, int price, int quantity, String img, String category, String derectory) {
 
@@ -68,6 +69,14 @@ public class Product {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public String getReportStart() {
+        return reportStart;
+    }
+
+    public void setReportStart(String reportStart) {
+        this.reportStart = reportStart;
     }
 
     public String getName() {
