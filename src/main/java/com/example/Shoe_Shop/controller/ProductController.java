@@ -5,10 +5,7 @@ import com.example.Shoe_Shop.Entity.ProductService;
 import com.example.Shoe_Shop.Repository.ProductRepository;
 import com.example.Shoe_Shop.dao.ProductDao;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -24,5 +21,13 @@ public class ProductController {
     @GetMapping("getAllProduct")
     List<Product> getProductAll(){
         return  productService.listAllProduct();
+    }
+    @GetMapping("/get3ProductNew")
+    List<Product> get3ProductNew(){
+        return  productService.listAll();
+    }
+    @GetMapping("/getNext3Product/{count}/{limit}")
+    List<Product> getNext3Product(@PathVariable("count") int count, @PathVariable("limit") int limit){
+        return  productService.findByName(count,limit);
     }
 }
