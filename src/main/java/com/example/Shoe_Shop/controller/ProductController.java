@@ -2,6 +2,7 @@ package com.example.Shoe_Shop.controller;
 
 import com.example.Shoe_Shop.Entity.Product;
 import com.example.Shoe_Shop.Entity.ProductService;
+import com.example.Shoe_Shop.Exception.UserNotFoundException;
 import com.example.Shoe_Shop.Repository.ProductRepository;
 import com.example.Shoe_Shop.dao.ProductDao;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,5 +30,14 @@ public class ProductController {
     @GetMapping("/getNext3Product/{count}/{limit}")
     List<Product> getNext3Product(@PathVariable("count") int count, @PathVariable("limit") int limit){
         return  productService.findByName(count,limit);
+    }
+    @GetMapping("/getProduct/{id}")
+    public Product getProductById(@PathVariable("id") int id){
+        Product p = productService.findByProductId(id);
+//        model.addAttribute("p",p);
+//        System.out.println(p.getId());
+        Product product = productRepository.findById(id).orElseThrow(()-> new UserNotFoundException(id));
+        return product;
+
     }
 }
