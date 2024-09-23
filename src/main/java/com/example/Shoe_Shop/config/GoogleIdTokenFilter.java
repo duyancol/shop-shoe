@@ -59,7 +59,7 @@ public class GoogleIdTokenFilter extends OncePerRequestFilter {
         if (googleIdToken != null && googleIdToken.startsWith("Bearer ")) {
             googleIdToken = googleIdToken.substring(7);
             GoogleIdTokenVerifier verifier = new GoogleIdTokenVerifier.Builder(new NetHttpTransport(), new JacksonFactory())
-                    .setAudience(Collections.singletonList("296410397096-13ujm0dvd47r6ioghsh637i09l6nbt37.apps.googleusercontent.com")) // Thay thế bằng Google Client ID của bạn
+                    .setAudience(Collections.singletonList("272854032499-uvoh7etrb27k4sp664qd3baj900l703l.apps.googleusercontent.com")) // Thay thế bằng Google Client ID của bạn
                     .build();
 
             try {
