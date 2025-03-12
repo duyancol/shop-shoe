@@ -31,6 +31,9 @@ public class ProductController {
     List<Product> getNext3Product(@PathVariable("count") int count, @PathVariable("limit") int limit){
         return  productService.findByName(count,limit);
     }
+    List<Product> getLastProduct(@PathVariable("count") int count, @PathVariable("limit") int limit){
+        return  productService.findByName(count,limit);
+    }
     @GetMapping("/getProduct/{id}")
     public Product getProductById(@PathVariable("id") int id){
         Product p = productService.findByProductId(id);

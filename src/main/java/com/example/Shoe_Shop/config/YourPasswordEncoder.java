@@ -15,13 +15,13 @@ public class YourPasswordEncoder implements PasswordEncoder {
 
     @Override
     public String encode(CharSequence rawPassword) {
-        // Mã hóa mật khẩu bằng cách sử dụng BCryptPasswordEncoder
+
         return bCryptPasswordEncoder.encode(rawPassword);
     }
 
     @Override
     public boolean matches(CharSequence rawPassword, String encodedPassword) {
-        // So sánh mật khẩu rõ với mật khẩu đã được mã hóa
+
         return bCryptPasswordEncoder.matches(rawPassword, encodedPassword);
     }
 }
